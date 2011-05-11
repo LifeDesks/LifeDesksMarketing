@@ -1,0 +1,1656 @@
+/*
+============================================================================
+LifeDesk
+Created on 12.07.2008
+By: OHO
+Modified by: EOL (A. Goddard and D. Shorthouse)
+============================================================================
+*/
+
+* {
+    margin:0;
+    padding:0;
+    }
+body {
+    font:12px/18px Arial,Helvetica,sans-serif;
+    background:#f1f1ee;
+    color:#231F20;
+    padding-top: 30px !important;
+    }
+p {
+    padding:0;
+    margin: 0 0 8px 0;
+    line-height:17px;
+    text-align:left;
+    }
+h1 {
+    font-size:30px;
+    margin: 0 0 8px 0;
+    color:#F15C40;
+    }
+h2 {
+    font-size:26px;
+    margin: 0 0 8px 0;
+    color:#231f20;
+    font-weight:bold;
+    }
+h3 {
+    font-size:17px;
+    margin: 0 0 8px 0;
+    color:#231f20;
+    font-weight:bold;
+    line-height:17px;
+    }
+h4 {
+    font-size:13px;
+    margin: 0 0 8px 0;
+    color:#231f20;
+    font-weight:bold;
+    }
+
+a:link, a:visited {
+    color:#003366;
+    text-decoration:none;
+    }
+a:hover, a:active {
+    color:#003366;
+    text-decoration:underline;
+    }
+ul {
+    margin: 0;
+    padding: 0 0 0 15px;
+    }
+ol {
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    }
+li {
+    }
+
+/* 
+================================================================
+MAIN CSS
+================================================================
+*/
+#wrapper { background:#f1f1ee url(../images/bg_body.png) top center repeat-y; width:100%; clear:both }
+#container {
+    height:auto;
+    min-height:600px;
+    clear:both;
+    min-width:600px;
+    width:82em;
+    border-left:1px solid #CCCCCC;
+    border-right:1px solid #CCCCCC;
+    margin:0 auto;
+    }
+
+/* 
+================================================================
+HEADER
+================================================================
+*/
+#header {
+    height:89px;
+    width:100%;
+    clear:both;
+    position:relative;
+    }
+#logo {
+    float:left;
+    padding: 0px;
+    }
+h1.site-title {display:none;}
+#nav { position:absolute; bottom:0px; right:24px; font-weight:bold; }
+#nav { _bottom:5px }
+#nav a { padding:5px 8px 2px; color:#000;}
+#nav a:hover { text-decoration:underline; color:#149ACC;}
+#nav ul { padding:0; margin:0 }
+#nav li { float:left; list-style-type:none }
+#nav a, #nav a:visited {
+    border-left:1px dotted #93B52B;
+    border-right:1px dotted #FFFFFF;
+    font-size:10px;
+    display:block;
+    float:left;
+    background: url("../images/topnav.gif") repeat-x scroll 0 -3px #A8D200;
+    }
+
+#nav ul li.active a { background: url("../images/topnav-active.gif") repeat-x scroll 0 -3px #A8D200; }
+
+#page-separator {
+    border-top:6px solid #959595;
+}
+
+/* 
+================================================================
+LIFEDESK GREENBAR CSS
+================================================================
+*/
+#lifedesk-greenbar-region {
+  background: none repeat scroll 0 0 #EDEDED;
+  width:100%;
+  padding: 0;
+  position:absolute; 
+  top:0; 
+  left:0;
+  font-size:0.85em;
+  height:30px;
+  border-bottom:1px solid #CCC;
+  color:#666666;
+  line-height:30px;
+  text-transform:uppercase;
+  }
+#lifedesk-greenbar-region a { color: #000; font-weight:bold;}
+#lifedesk-greenbar-region a:hover, #lifedesk-greenbar-region a:active {
+    color:#149ACC;
+    text-decoration:underline;
+    }
+#lifedesk-greenbar-search-form {
+    padding:0;
+    margin:0;
+}
+
+#lifedesk-greenbar-search {
+    left:5px;
+    padding-left:5px;
+    position:absolute;
+    width:225px;
+    }
+
+#lifedesk-greenbar-search .lifedesk-greenbar-search-form-text {
+    height:14px;
+    line-height:14px;
+    vertical-align:middle;
+    width:120px;
+    }
+
+#lifedesk-greenbar-search .lifedesk-greenbar-search-form-submit {
+    background-color:#F2F2F2;
+    background-image:url("../images/magnifier.png");
+    background-position:3px center;
+    background-repeat:no-repeat;
+    border-color:#CCCCCC #CCCCCC #555555;
+    border-style:solid;
+    border-width:1px;
+    height:22px;
+    margin-left:4px;
+    padding-left:12px;
+    vertical-align:middle;
+    width:75px;
+}
+
+.lifedesk-greenbar {
+    color:#666666;
+    line-height:30px;
+    text-transform:uppercase;   
+}
+#lifedesk-greenbar-meta { 
+    position:absolute;
+    right:5px;
+    top:0;
+    }
+#lifedesk-greenbar-meta span {
+    background-position:left center;
+    background-repeat:no-repeat;
+    display:inline-block;
+    margin:0 3px;
+    padding-left:20px;
+}
+
+#lifedesk-greenbar-meta span.lifedesk-greenbar-create { background-image:url(../images/pencil_add.gif); }
+#lifedesk-greenbar-meta span.lifedesk-greenbar-help { background-image:url(../images/help.gif); }
+#lifedesk-greenbar-meta span.lifedesk-greenbar-new { background-image:url(../images/wand.gif); }
+
+/* 
+================================================================
+CONTENT CSS
+================================================================
+*/
+#content {
+    padding:5px 0px 15px 25px;
+    text-align:left;
+    min-height:450px;
+    }
+.home {
+    width:630px;
+    float:left;
+    }
+.hometop {
+    }
+
+#homedescription {
+    margin:0 0 0 0;
+    padding: 20px 30px 10px 20px;
+    background: #cae6f0 url(../images/bluebox_top_bg.gif) 0 0 no-repeat;
+  }
+#homedescription h1 {
+    color:#231F20;
+    font-size:26px;
+    font-weight:bold;
+    margin:0 0 15px;
+}
+#homedescription h2 {
+    color:#231F20;
+    font-size:22px;
+    font-weight:bold;
+    margin:30px 0 15px;
+}
+#homeicons {
+    margin:0px auto;
+    width:575px
+  }
+#homeicons div {
+    width:140px;
+    float:left;
+  }
+#homeicons div p {
+    text-align:center;
+  }
+#latest-images {
+    margin-top:10px;
+    text-align:center;
+    height:225px;
+    background:#F1F1F2 url(../images/lifedesk_in_Action_alt.gif) top left no-repeat;
+  }
+#latest-images h2 {
+    color:#231F20;
+    font-size:20px;
+    font-weight:bold;
+    margin:30px 0 7px;
+    padding-top:10px;
+  }
+#latest-images ul, #latest-images ul li {
+  list-style: none;
+  display:inline;
+  margin:0px;
+  padding:0px;
+  }
+#latest-images ul li {
+  float:left;
+  height:80px;
+  width:80px;
+  margin:5px 20px;
+  }
+
+#latest-images-cooliris {
+  margin-top:0px;
+  padding-top:0px;
+}
+
+#toolkit, #videos {
+    background:#ffffff url(../images/toolkit_bg.gif) bottom left repeat-x;
+    height:234px;
+    padding: 0 0 0 10px;
+    }
+    
+#videos { }
+
+#videos .videoA { float:left;}
+#videos .videoB { float:right; padding:0 15px 0 0 }
+
+#toolkit .tool_arrow {
+    float:left;
+    padding: 115px 0 0 0;
+    width:21px;
+    }
+#toolkit .toolgallery {
+    float:left;
+    margin: 0 6px 0 6px;
+    }
+.description {
+    font-size:0.85em;
+    margin-bottom:10px;
+    }
+#lifedesk_response_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 500px;
+    display:none;
+    }
+#lifedesk_response_messsage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    width: 300px;
+    text-align:center;
+    display:none;
+    }
+#lifedesk_response_button {
+    margin-top:20px;
+    }
+#cit_response_message {
+    background-color:#C8DC47;
+    padding:30px;
+    font-size:200%;
+    border:4px solid #FFF;
+    width:800px;
+    margin:0px auto;
+    }
+#cit_response_message p {
+    line-height:120%;
+    }
+#expert_response_message {
+    background-color:#9ED1E2;
+    padding:30px;
+    font-size:200%;
+    border:4px solid #FFF;
+    width:800px;
+    margin:0px auto;
+    text-align:center;
+    }
+#expert_response_message p {
+    line-height:120%;
+    text-align:center;
+    }
+#create_content {
+    width:550px;
+    margin:0px auto;
+}
+#for_experts {
+    background: url(../images/LifeDesk_for_experts.jpg) top left no-repeat;
+    padding: 40px 5px 0 5px;
+    margin: 0px auto;
+    width:520px;
+    float:left;
+    }
+#for_experts h1 {
+    width:350px;
+    line-height:125%;
+    margin:0px auto;
+    text-align:center; 
+    margin-bottom:20px;
+    color:#000;
+    font-size:360%;
+    }
+#for_experts h1 small {
+    display:block;
+    color:#666666;
+    text-transform:uppercase;
+    font-size: 60%;
+    line-height:100%;
+    }
+#beta_request {
+    margin-top:10px;
+    border:1px solid #E0E0E0;
+    padding:5px;
+    }
+#for_12k {
+    background: url(../images/LifeDesk_for_k12.jpg) top left no-repeat;
+    width:410px;
+    padding: 40px 5px 0 15px;
+    float:left;
+    margin-top:5px;
+    }
+#for_12k h1 {
+    width:350px;
+    line-height:125%;
+    margin:0px auto;
+    text-align:center; 
+    margin-bottom:20px;
+    color:#000;
+    font-size:360%;
+    }
+#for_12k h1 small {
+    display:block;
+    color:#666666;
+    text-transform:uppercase;
+    font-size: 60%;
+    line-height:100%;
+    }
+#url_requested {
+    height:16px;
+    vertical-align:middle;
+    margin-bottom:10px;
+    }
+#site_title {
+    height:16px;
+    vertical-align:middle;  
+    }
+#num_participants {
+    margin:0px 0px 10px 0px;
+    text-align:center;
+    }
+#num_species {
+    margin:0px 0px 10px 0px;
+    text-align:center;
+    }
+#terms_acceptance {
+    margin: 10px auto 0;
+    height:18px;
+    vertical-align:middle;
+    width:400px;
+    text-align:center;
+  }
+#terms_acceptance span {
+    color:#FF0000;
+  }
+#terms {
+    width:100%;
+    height:150px;
+    margin:0px auto;
+}
+#termsList dt {
+    font-weight:bold;
+}
+#list_names {
+    margin: 5px 0px 0px 0;
+    height:18px;
+    vertical-align:middle;
+  }
+#list_names_message {
+    margin:0px 0px 0px 50px;
+    font-size:xx-small;
+  }
+#definitions {
+    margin-top:20px;
+  }
+#definitions h3 {
+    text-transform:uppercase;
+  }
+#definitions dl {
+    margin:0px;
+    padding:0px;
+  }
+#definitions dl dt {
+    font-weight:bold;
+  }
+#definitions dl dd {
+    padding-left:20px;
+    margin-bottom:10px;
+  }
+.checked {
+    background: url(../images/checked.gif) 0 3px no-repeat;
+    margin: 0 0 8px -20px;
+    padding: 0 0 0 20px;
+    font-size:125%;
+    }
+
+.radioBtn { 
+    display: inline; 
+    padding-right: 30px;
+    padding-bottom: 10px; 
+    }
+
+.announcement {
+    border:2px solid #888;
+    padding:10px;
+    margin-bottom:10px;
+    text-align:center;
+}
+
+#create_expert_lifedesk label {
+    display:block;
+    float:left;
+    font-family:arial;
+    font-size:120%;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    line-height:normal;
+    padding-right:10px;
+    padding-top:0.6em;
+    text-align:right;
+    width:140px;
+    }
+
+#create_expert_lifedesk label.fixed-input {
+    -x-system-font:none;
+    color:#666666;
+    display:inline;
+    float:none;
+    font-family:arial;
+    font-size:180%;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    letter-spacing:-1px;
+    line-height:normal;
+    padding:0 2px;
+    }
+        
+#create_expert_lifedesk label small {
+    color:#888888;
+    display:block;
+    font-size:90%;
+    font-weight:normal;
+    line-height:1;
+    }
+
+#create_expert_lifedesk label span {
+    color:#FF0000;
+    }
+
+#create_expert_lifedesk .createinput {
+    -x-system-font:none;
+    border:1px solid #9EB7D8;
+    color:#000000;
+    font-family:arial;
+    font-size:200%;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    letter-spacing:-1px;
+    line-height:normal;
+    padding:3px 5px;
+    }
+
+#create_expert_lifedesk .input1 {
+    width:335px;    
+    }
+
+#create_expert_lifedesk .input2 {
+    width:225px;
+    }
+
+#create_expert_lifedesk #throbber {
+    width:40px;
+    display:none;
+    background:url('../images/ajax-loader.gif') no-repeat scroll 6px center transparent;
+    height:20px;
+    line-height:20px;
+    padding:1px 5px 1px 24px;
+}
+
+#create_expert_lifedesk #ld_taxa_found {
+  display:none;
+  margin:0px auto;
+  padding:0 0 0 8px;
+  width:325px;
+  height:175px;
+}
+
+#create_expert_lifedesk #ld_taxa_found .sites {
+    float:left;
+    margin:0 8px;
+    height:150px;
+}
+
+#create_expert_lifedesk #ld_taxa_found .sites h3 {
+   width:250px;
+}
+
+#create_expert_lifedesk #ld_taxa_found .exarrowl {
+    float:left;
+    padding:75px 0 0;
+    width:21px; 
+}
+
+#create_expert_lifedesk #ld_taxa_found p {
+  margin-top:10px;
+  text-align:center;
+  font-style:italic;
+}
+
+#create_expert_lifedesk #ld_taxa_found ul, #create_expert_lifedesk #ld_taxa_found li {
+  list-style-type:none;
+  text-align:center;
+  clear:none;
+}
+
+#create_expert_lifedesk #ld_taxa_found li span {
+    display:block;
+    line-height:1em;
+}
+
+#create_expert_lifedesk #ld_taxa_found li span.ld_taxa_latestimage {
+    margin-top:5px;
+    height:100px;
+}
+
+#create_expert_lifedesk #ld_taxa_found li img.thumb {
+    width:100px;
+}
+
+#create_cit_lifedesk label {
+    display:block;
+    float:left;
+    font-family:arial;
+    font-size:120%;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    line-height:normal;
+    padding-right:10px;
+    padding-top:0.6em;
+    text-align:right;
+    width:100px;
+    }
+
+#create_cit_lifedesk label.fixed-input {
+    -x-system-font:none;
+    color:#666666;
+    display:inline;
+    float:none;
+    font-family:arial;
+    font-size:180%;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    letter-spacing:-1px;
+    line-height:normal;
+    padding:0 2px;
+    }
+
+#create_cit_lifedesk label small {
+    color:#888888;
+    display:block;
+    font-size:90%;
+    font-weight:normal;
+    line-height:1;
+    }
+
+#create_cit_lifedesk label span {
+    color:#FF0000;
+    }
+
+#create_cit_lifedesk .createinput {
+    -x-system-font:none;
+    border:1px solid #9EB7D8;
+    color:#000000;
+    font-family:arial;
+    font-size:200%;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    letter-spacing:-1px;
+    line-height:normal;
+    padding:3px 5px;
+    }
+
+#create_cit_lifedesk .input1 {
+    width:250px;    
+    }
+
+#create_cit_lifedesk .input2 {
+    width:250px;
+    }
+
+#create_cit_lifedesk textarea {
+    width:260px;
+    height:200px;
+    border: 1px solid #9EB7D8;
+    font-family:Verdana,Arial,Helvetica,sans-serif;
+    font-size:150%;
+    }
+#create_site {
+  margin-top:40px;
+  min-height:300px;
+  text-align:center !important;
+  width:95%;
+  margin:50px 0px auto;
+  }
+#create_site_title {
+   font-style: italic;
+   font-size:24px;
+   line-height:24px;
+   font-weight:bold;
+   margin:30px;
+   }
+#create_site_message {
+    font-size:150%;
+    }
+#create_site_message img{
+    margin:20px;
+    }
+#create_site_message span {
+    font-size:60%;
+    display:block;
+    }
+#create_site_url {
+    font-size:175%;
+    margin-top:15px;
+    }
+#create_site_credentials {
+   width:300px;
+   margin:15px 0px auto;
+   padding-left:120px;  
+   }
+#create_site_credentials ul {
+   list-style-type:none;
+   }
+#create_site_credentials ul li {
+   text-align:left;
+   font-size:16px;
+   }
+#create_site_help {
+    text-align:left;
+    text-indent:10px;
+    font-size:100%;
+    margin-top:40px;
+    }           
+#contact_form label {
+    display:block;
+    float:left;
+    font-family:arial;
+    font-size:120%;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    line-height:normal;
+    padding-right:10px;
+    padding-top:0.6em;
+    text-align:right;
+    width:110px;
+    }
+
+#contact_form label.fixed-input {
+    -x-system-font:none;
+    color:#666666;
+    display:inline;
+    float:none;
+    font-family:arial;
+    font-size:180%;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    letter-spacing:-1px;
+    line-height:normal;
+    padding:0 2px;
+    }
+
+#contact_form label small {
+    color:#888888;
+    display:block;
+    font-size:90%;
+    font-weight:normal;
+    line-height:1;
+    }
+
+#contact_form label span {
+    color:#FF0000;
+    }
+    
+#contact_form .contactinput {
+    -x-system-font:none;
+    border:1px solid #9EB7D8;
+    color:#000000;
+    font-family:arial;
+    font-size:200%;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    letter-spacing:-1px;
+    line-height:normal;
+    padding:3px 5px;
+    }
+    
+#contact_form .input1 {
+    width:335px;    
+    }
+            
+form .error {
+    background-color:#CC3333;
+    color:#FFF;
+    }
+
+form .input3 {
+    margin: 0 0 10px 0;
+  }
+
+form textarea {
+    width:345px;
+    height:300px;
+    border: 1px solid #9EB7D8;
+    font-family:Verdana,Arial,Helvetica,sans-serif;
+    font-size:150%;
+    }
+
+form select {
+    width:335px;
+    margin: 0 0 10px 0;
+    }
+
+form ol li {
+    clear:left;
+    margin-bottom:5px;
+    }
+    
+form li .real-time-validation {
+    display:block;
+    margin:0 0 0 150px;
+    font-size:10px;
+    }
+
+form li .real-time-validation2 {
+    display:block;
+    margin:0 0 0 120px;
+    font-size:10px;
+    }
+        
+form li .citizens {
+    display:block;
+    margin:0 0 0 110px;
+    font-size:10px;
+    }
+        
+form li .real-time-validation span {
+    color:#FFFFFF;
+    font-size:110%;
+    padding:0 2px;
+    text-transform:lowercase;
+    }
+
+form li .real-time-validation2 span {
+    color:#FFFFFF;
+    font-size:110%;
+    padding:0 2px;
+    text-transform:lowercase;
+    }
+        
+form li span.fail {
+    background-color:#BB0000;
+    }
+
+form li span.fail img {
+    vertical-align:middle;
+    }
+        
+form li span.fail a {
+    color:white;
+    }
+
+form li span.pass {
+    background-color:#6FBC00;
+    }
+                
+.recaptcha {
+    float:right;
+    margin-right:20px;
+    }
+
+#recaptcha_table {
+  border:0px !important;    
+  }
+
+#recaptcha_response_good {
+  font-size:medium;
+  padding:10px;
+  margin:0px auto 20px;
+  text-align:center;
+  width:400px;
+  border:2px solid green;
+  }
+#recaptcha_response_bad {
+    font-size:small;
+    margin:0px auto 20px;
+    text-align:center;
+    width:400px;
+    font-style: italic;
+  }
+#recaptcha_response_bad_email {
+    font-size:small;
+    padding-left:40px;
+    margin-bottom:20px;
+    font-style: italic;
+  }
+
+form .submit {
+    text-align:center;
+    margin: 20px 0 10px 0;
+    }
+
+#message {
+    width:290px;
+    height:200px;
+    border: 1px solid #9EB7D8;
+    font-family:Verdana,Arial,Helvetica,sans-serif;
+    font-size:150%;
+    }
+
+.subpage {
+    width:630px;
+    float:left;
+    }
+.search_subpage {
+    width:100% !important;
+    padding:0px !important;
+    }
+.search_results {
+    width:730px;
+    float:left;
+    }
+#text {
+    margin:0 0 0 0;
+    padding: 20px 30px 10px 20px;
+    background: #cae6f0 url(../images/bluebox_top_bg.gif) 0 0 no-repeat;
+    }
+#text_alternate {
+    margin:20px 0 0 0;
+    padding: 20px 20px 10px 20px;
+    background: #cae6f0 url(../images/bluebox_top_bg.gif) 0 0 no-repeat;
+    }
+#text h2 {
+    margin-bottom:15px;
+  }
+#text_alternate h2 {
+    margin-bottom:15px;
+  }
+.numlist1 {
+    background: url(../images/icon_one.gif) 0 0 no-repeat;
+    padding: 8px 0 0 44px;
+    margin: 14px 0 0 -44px;
+    }
+.numlist2 {
+    background: url(../images/icon_two.gif) 0 0 no-repeat;
+    padding: 8px 0 0 44px;
+    margin: 14px 0 0 -44px;
+    }
+.numlist3 {
+    background: url(../images/icon_three.gif) 0 0 no-repeat;
+    padding: 8px 0 0 44px;
+    margin: 14px 0 0 -44px;
+    }
+.numlist4 {
+    background: url(../images/icon_four.gif) 0 0 no-repeat;
+    padding: 8px 0 0 44px;
+    margin: 14px 0 0 -44px;
+    }
+#current-tasks {
+    text-align:right;
+    font-style:italic;
+}
+#current-tasks a {
+    background: url(../images/asterisk_yellow.png) 0 0 no-repeat;
+    padding: 4px 0 0 20px;
+}
+.release_version {
+    margin-top:15px;
+    }
+.release_version ul {
+    margin-bottom:15px;
+}
+.release_version ul.internal_list {
+    margin-bottom:0px;
+}
+
+.who-has { line-height:17px; text-transform:uppercase; font-weight:bold; display:block; }
+#inaction { margin:0 0 0 25px }
+#requestError { margin:15px 0; padding:10px; background:#b33; color:#fff }
+#scrollTerms { height:125px; overflow:auto }
+#scrollTerms h3 { font-size: 14px;}
+#scrollTerms dl dd {
+    margin-bottom:10px;
+    }
+#contact_us_text {
+    background:#CAE6F0 url(../images/bluebox_top_bg.gif) 0 0 no-repeat;
+    margin:0 0 0 0;
+    padding:20px 30px 10px 20px;
+    }
+#contact_us_text h2 {
+    margin-bottom:25px;
+    }
+
+/*
+=============================================================
+SITE GALLERY
+=============================================================
+*/
+
+#lifedesks_gallery {
+   width:100%;
+   margin:0px auto;
+   text-align:center;
+   float:left;
+   min-height:420px;
+   }
+#site-sort {
+    float:right;
+    margin-top:5px;
+    margin-right:5px;
+
+}
+#site-sort form label {
+    font-weight:bold;
+}
+#site-sort form select {
+    width:110px !important;
+}
+#lifedesks_title {
+   line-height:20px;
+   margin-bottom:15px;  
+   }
+#lifedesks_gallery ul {
+   padding:0px;
+   }
+#lifedesks_gallery ul, #lifedesks_gallery li {
+   list-style-type: none;
+   display:inline;
+   }
+#lifedesks_gallery h3 {
+    min-height:30px;
+}
+#lifedesks_gallery li {
+   margin:5px 20px;
+   float:left;
+   width:200px;
+   height:220px;
+   }
+.lifedesks_image {
+   height:120px;
+   position:relative;
+   }
+.lifedesks_image img.thumb {
+   vertical-align:middle;
+   -moz-border-radius-bottomleft:10px;
+   -moz-border-radius-bottomright:10px; 
+   -moz-border-radius-topleft:10px; 
+   -moz-border-radius-topright:10px;
+   background-color:#E0E6FC;
+   border:1px solid #CCC;
+   padding:10px;
+   margin-bottom:20px;
+   }
+.lifedesks_info {
+   height:14px;
+   line-height:14px;    
+   }
+.lifedesks_info img {
+   vertical-align:middle;   
+   }
+.lifedesks_info span {
+   cursor:pointer;  
+   }
+.lifedesks_statistics {
+   font-size:13px;
+   display:none;
+   position: relative;
+   background-color:#FFF;
+   }
+.lifedesks_title {
+   font-size:16px;
+   font-weight:bold;    
+   }
+.lifedesks_statistics span {
+   display:block;   
+   }
+.bt-content span {
+   display:block;
+   }
+.lifedesks_partner {
+   position:absolute;
+   top:-5px;    
+   right:25px;  
+   }
+#paginator {
+    width:600px;
+    height:25px;
+    margin:0px auto;
+    margin-bottom:10px;
+    margin-top:20px;
+    text-align:center;
+    font-size:large;
+    }
+.lifedesks_stats {
+    display:block;
+    }
+
+/*
+=============================================================
+MODULES
+=============================================================
+*/
+div.module {
+    margin:5px 0px 25px 0px;
+}
+
+div.module-description {
+    margin-bottom:3px;
+}
+
+div.module ul li {
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+}
+
+#module-introduction {
+    margin:20px 0px;
+}
+
+div.module-download a {
+    background:transparent url(../images/disk.gif) no-repeat scroll 6px center;
+    display:block;
+    height:20px;
+    line-height:20px;
+    padding:1px 5px 1px 24px;
+}
+
+div.module span {
+    font-weight:bold;
+}
+
+#disclaimer {
+    border: 2px solid #BA3C3D;
+    padding:5px;
+    margin-bottom:25px;
+}
+
+#disclaimer span {
+    font-weight: bold;
+}
+
+.align-left { float:left; margin: 20px 15px 20px 0; } 
+.drupal {height:50px;}
+
+/*
+=============================================================
+ABOUT
+=============================================================
+*/
+ul.about-list {
+  margin-bottom:10px;   
+  }
+p.about-bio {
+  height:80px;  
+  }
+img.about-mugshots {
+  float:left;
+  margin-right:10px;    
+  }
+/*
+=============================================================
+CLASSIFICATIONS
+=============================================================
+*/
+#classifications-description {
+    margin-bottom:25px !important;  
+  }
+p.classification-citation {
+  text-indent:-2em;
+  margin:0.5em 0 0 2em; 
+  }
+p.classification-citation span.download {
+    margin-left:10px;   
+  }
+p.classification-citation span.view-site {
+    margin-left:10px;   
+  }
+
+/*
+=============================================================
+APIs and RSS
+=============================================================
+*/
+
+span.api-rss {
+    display:block;
+}
+
+/*
+=============================================================
+SIDEBAR
+=============================================================
+*/
+#sidebar {
+    width:265px;
+    float:right;
+    padding-right:14px;
+    padding-top:5px;
+    padding-bottom:25px;
+    margin: 0 12px 0 0;
+    }
+.sidebanner {
+    background:#F1F1F2 url(../images/make_a_LifeDesk_alt.gif) top left no-repeat;
+    height:76px;
+    }
+.sidebanner span {
+    font-weight:bold;
+    margin:0px auto;
+    display:block;
+    padding:15px 0px 0px 0px;
+    text-align:center;
+    font-size:14px;
+    color:white;
+    }
+
+.sidecontent {
+    padding: 5px 15px 15px 26px;
+    background:#F1F1F2 url(../images/side_content_bg.gif) bottom left no-repeat;
+    margin: 0 0 9px 0;
+    }
+.btn1 {
+    margin: 10px 0;
+    }
+.users {
+    width:90%;
+    height:16px;
+    line-height:16px;
+    margin:0px auto;
+    text-align:center;
+  }
+.sidecontent .btn1 a {
+    width:176px;
+    height:20px;
+    margin: 0 auto;
+    background: url(../images/btn1_bg.gif) 0 0 no-repeat;
+    display:block;
+    padding: 3px;
+    font-size:11px;
+    font-weight:bold;
+    color:#ffffff;
+    text-align:center;
+    text-transform:uppercase;
+    }
+.sidecontent .btn1 a:hover {
+    color:#ffffff;
+    }
+.explorebanner {
+    background:#F1F1F2 url(../images/explore_LifeDesks_alt.gif) top left no-repeat;
+    height:62px;
+    }
+.explorebanner span {
+    font-weight:bold;
+    margin:0px auto;
+    display:block;
+    padding:10px;
+    text-align:center;
+    font-size:medium;
+    }
+.explore {
+    background:#F1F1F2 url(../images/side_content_bg.gif) bottom left no-repeat;
+    height:215px;
+    padding: 0 0 0 8px;
+    margin: 0 0 9px 0;
+    display:none;
+    }
+.explore .ex_arrowl {
+    width:21px;
+    float:left;
+    padding: 75px 0 0 0;
+    }
+.explore .sidegallery {
+    float:left;
+    margin: 0 8px 0 8px;
+    }
+.explore p {
+    text-align:center;
+    }
+.note {
+    font-size:10px;
+    font-style:italic;
+    }
+.tell_friend {
+    padding: 15px 0 0 0;
+    }
+.tell_friend form label {
+    display:block;
+    font-size:11px;
+    font-weight:bold;
+    }
+.tell_friend form .input {
+    margin: 0 0 12px 0;
+    width:200px;
+    }
+.tell_friend form .submit {
+    margin: 8px 0 8px 0;
+    }
+.tell_friend .response {
+    margin:10px 0px;
+    }
+.redbox {
+    padding: 10px 0 0 0;
+    }
+
+/*
+=============================================================
+FOOTER
+=============================================================
+*/
+#footer {
+    background-color:#ddd;
+    font-weight:bold;
+    text-align:center;
+    position:relative;
+    height:30px;
+    line-height:30px;
+    }
+#footer img { vertical-align:middle; float:left; margin-left:20px; position:absolute; left:10px; top:5px;}
+/*
+=============================================================
+COMMON
+=============================================================
+*/
+img {
+    border:0;
+    }
+.imgLeft {
+    float: left;
+    margin: 0 10px 0 0px;
+    }
+.imgRight {
+    float: right;
+    margin: 0 0 0 10px;
+    }
+.clear {
+    clear:both;
+    }
+.left {
+    float:left;
+    }
+.right {
+    float:right;
+    }
+.txtRight {
+    text-align:right;
+    }
+fieldset {
+  border: none;
+  margin-bottom: 1em;
+  }
+fieldset input {
+  display: inline;
+  }
+fieldset label {
+  display: inline;
+  margin-left: 0.5em;
+  margin-right: 3em;
+  }
+.error-message {
+  display: none;
+  }
+input.form-error {
+  border-color: red;
+  }
+.emailSent{
+  color: green;
+  font-weight: bold;
+  }
+.errors{
+  color: red;
+  font-weight: bold;
+  }
+
+/*
+=============================================================
+SEARCH NAVIGATION
+=============================================================
+*/
+#navigation {
+    width:165px;
+    float:left;
+    padding-left:14px;
+    padding-top:5px;
+    padding-bottom:25px;
+    margin: 0 12px 0 0;
+    border-right:1px solid #D3E1F9;
+    }
+.search_menu {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    }
+.mitem {
+    background-repeat: no-repeat;
+    background-position: 5px 5px;
+    font-size:18px;
+    padding: 5px 25px;
+    }
+.msel{
+    font-weight:bold;
+    }
+.everythingicon {
+    background-image: url(../images/magnifier.png);
+    }
+.imageicon {
+    background-image: url(../images/picture.png);
+    }
+.biblioicon {
+    background-image: url(../images/book.png);
+    }
+.taxonpageicon {
+    background-image: url(../images/page.png);
+    }
+.siteicon {
+    background-image: url(../images/house.png);
+    }
+.taxonicon {
+    background-image: url(../images/bug.png);
+    }
+.simplemappricon {
+    background-image: url(../images/map.png);
+    }
+.everythingicon-selected {
+    background-image: url(../images/magnifier_missing.png);
+    }
+.imageicon-selected {
+    background-image: url(../images/picture_missing.png);
+    }
+.biblioicon-selected {
+    background-image: url(../images/book_missing.png);
+    }
+.taxonpageicon-selected {
+    background-image: url(../images/page_missing.png);
+    }
+.siteicon-selected {
+    background-image: url(../images/house_missing.png);
+    }
+.taxonicon-selected {
+    background-image: url(../images/bug_missing.png);
+    }
+.simplemappricon-selected {
+    background-image: url(../images/map_missing.png);
+    }
+    
+.latest_image {
+    width:100px;
+    height:50px;
+    float:left;
+    padding-right:14px;
+    padding-top:5px;
+    padding-bottom:25px;
+    margin: 0 12px 0 0;
+    }
+
+.content_details {
+    width:265px;
+    padding-right:14px;
+    padding-top:5px;
+    padding-bottom:25px;
+    margin: 0 12px 0 0;
+    }
+    
+/*
+=============================================================
+SEARCH RESULTS
+=============================================================
+*/
+
+.search-block {
+    margin-top:10px;
+    padding:10px;
+    border:1px solid #D3E1F9;
+}
+
+.search-block span {
+    margin-right:20px;
+}
+
+.search-block h3 {
+    background-position:5px 5px;
+    background-repeat:no-repeat;
+    font-size:18px;
+    padding:5px 25px;
+    font-weight:normal;
+}
+
+.search-taxa h3 {
+    background-image:url("../images/bug.png");
+}
+
+.search-sites h3 {
+    background-image:url("../images/house.png");
+}
+
+#recommended-links {
+    margin-top:15px;
+    font-style:italic;
+}
+
+input.search_searchbox { width:111px; padding:2px; position:relative; bottom:-1px; left:-1px }
+
+
+form.search_globalsearchform {
+    margin:0px;
+    padding: 0px;
+  }
+.search_button {
+  background-color:#F2F2F2;
+  background-image:url(../images/magnifier.gif);
+  background-repeat: no-repeat;
+  border: 1px solid;
+  border-color: #cccccc #555555 #555555 #cccccc;
+  background-position:3px;
+  padding-left: 12px;
+  padding-bottom: 3px;
+  height: 22px;
+  width: 75px;
+  font-size:11px;
+  font-weight:normal;
+  margin-left:-2px;
+  _margin-bottom:-1px;
+  }
+
+*:first-child+html .search_button { /* for ie7 only */
+    top:1px; position:relative; left:-2px;
+    font-size:13px;
+}
+* html .search_button { /* for ie6 only */
+    font-size:13px;
+}
+*:first-child+html input.search_searchbox { padding:1px; width:119px; /* for ie7 only */ }
+* html input.search_searchbox { padding:1px; width:119px; /* for ie6 only */ }
+
+#search_searchbox_form {
+    width:200px !important;
+}
+
+form.search_searchform {
+    margin:20px auto;
+    padding: 13px 20px;
+    background: #cae6f0 url(../images/search_background.gif) 0 0 no-repeat;
+    width:400px;
+    text-align:center;
+    height:24px;
+  }
+.search_results_per_page {
+    display:none;
+  }
+.search_categories {
+    display:none;
+  }
+.search_match {
+    display:none;
+  }
+.search_summary {
+    display:none;
+  }
+.searchheading {
+    display:none;
+  }
+.summary {
+    background:#F0F7F9 none repeat scroll 0 0;
+  border-top:1px solid #6B90DA;
+  text-align:right;
+  padding:0.2em;
+  width:97%;
+  margin:0px auto;
+  }
+.suggestion {
+    font-style:italic;
+    font-size:small;
+    margin:0 0 10px 15px;
+  }
+.result_block {
+    margin:10px 10px 15px;
+  }
+.result_altblock {
+    margin:10px;
+  }
+.result_title {
+    font-size:medium;
+    margin-bottom:3px;
+  }
+.result_title span {
+    background:none;
+    background-position: 6px center;
+    background-repeat: no-repeat;
+    outline: none;
+    padding: 1px 5px;
+    padding-left: 24px;
+    width:25px; 
+  }
+.result_title span.page-icon {
+  background-image: url(../images/page_white.png);
+  }
+.result_title span.image-icon {
+  background-image: url(../images/picture.png);
+  }
+.result_title span.biblio-icon {
+  background-image: url(../images/book.png);
+  }
+.result_title span.taxonpage-icon {
+  background-image: url(../images/page.png);
+  }
+.result_title span.simplemappr-icon {
+  background-image: url(../images/map.png);  
+  }
+.result_title span.site-icon {
+  background-image: url(../images/house.png);
+  }
+.result_title span.taxon-icon {
+  background-image: url(../images/bug.png);
+  }
+.result_title b {
+    display:none;
+  }
+.result_pagescount {
+    margin:0px 0px 10px 10px;
+  }
+.result_pages {
+    font-size:small;
+    margin:30px 0px 20px 10px;
+  }
+.context {
+    margin-left:5px;
+  }
+.infoline {
+    margin-left:5px;
+    color:green;
+  }
+.searchtime {
+    display:none;
+  }
+.paginator { padding-top: 0px; margin-left: auto; margin-right: auto; margin-bottom:15px; font-size:14px;}
+.paginator a, .pageList .this-page { padding: 0px 2px; border: solid 1px #ddd; background: #fff; text-decoration: none; }
+.paginator a:visited { padding: 0px 2px; border: solid 1px #ddd; background: #fff; text-decoration: none; }
+.paginator .atstart { margin-right: 10px; padding: 0px 2px; border: solid 1px #ddd; background: #fff; color: #aaa; }
+.paginator .prev { margin-right: 10px; padding: 0px 2px; border: solid 2px #ddd; background: #fff; }
+.paginator .break { padding: 2px 6px; border: none; background: #fff; text-decoration: none; }
+.paginator .next { margin-left: 10px; padding: 0px 2px; border: solid 2px #ddd; background: #fff;}
+.paginator .atend { margin-left: 10px; padding: 0px 2px; border: solid 1px #ddd; background: #fff; color: #aaa; }
+.paginator .this-page {padding: 0px 2px; border-color: #999; font-weight: bold; background: #fff; color: #FF0000; }
+.paginator a:hover {color: #fff; background: #0063DC; border-color: #036; text-decoration: none;}
+.pages div.results { text-align: center; font: 11px/15px Arial, Helvetica; color: #aaa; margin-top: 0px; }

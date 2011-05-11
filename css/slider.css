@@ -1,0 +1,12 @@
+/*This width !important is actually very !IMPORTANT.  It is used to override the sometimes incorrect calculations of jcarousel lite.*/
+.toolgallery {
+	float:left;
+	width: 546px!important;
+	height: 250px!important;
+}
+
+.sidegallery ul, .toolgallery ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
