@@ -46,9 +46,6 @@ require_once('../conf/vars.inc.php');
 <h3>LifeDesks Developers</h3>
 
 <p>The LifeDesks team members have backgrounds in the biological and computer sciences and share an <a href="http://en.wikipedia.org/wiki/Agile_software_development">Agile</a> philosophy.</p>
-
-<h4>David P. Shorthouse (Team Lead)</h4>
-<p class="about-bio"><img src="/images/shorthouse.jpg" alt="David Shorthouse" class="about-mugshots" />David hails from Canada, has a background in spider ecology. He has an interest in names management and spearheads the classification editing environment in LifeDesks.</p>
 	
 <h4>Vitthal Kudal (Biodiversity Informatician)</h4>
 <p class="about-bio"><img src="/images/kudal.png" alt="Vitthal Kudal" class="about-mugshots" />Vitthal joined the LifeDesk team from India and has a background in computer sciences. He has expertise in database management and systems architecture and designed the LifeDesks multisite system.</p>
@@ -60,6 +57,9 @@ require_once('../conf/vars.inc.php');
 
 <h4>Alexey Shipunov</h4>
 <p class="about-bio"><img src="/images/shipunov.jpg" alt="Alexey Shipunov" class="about-mugshots" />Alexey is a botanist, taxonomist, and a developer. He helped the LifeDesks project with deep thinking about names management and wrote the first versions of the classification import tools and the Encyclopedia of Life content partnership exchange.</p>
+
+<h4>David P. Shorthouse</h4>
+<p class="about-bio"><img src="/images/shorthouse.jpg" alt="David Shorthouse" class="about-mugshots" />David hails from Canada, has a background in spider ecology. He has an interest in names management and spearheaded the classification editing environment in LifeDesks.</p>
                 	
         		</div>
 				<img src="/images/bluebox_bottom_bg.gif" alt="" />
