@@ -216,7 +216,7 @@ $info_files = array();
 			<h2 id="modules">Modules</h2>
 <p id="module-introduction"><a href="http://drupal.org"><img class="align-left drupal" src="../images/drupal.gif" alt="Drupal" title="Drupal" /></a>Drupal is the platform of choice for LifeDesks. Many of the modules we created or those our friends created are available below for download and are automatically updated every time we release new code. Other modules listed are linked to their project page at <a href="http://drupal.org">http://drupal.org</a>. We will eventually contribute our modules to Drupal's project repository, but we first need your feedback and suggestions. Interested in multisite hosting your own LifeDesk platform? <a href="/files/LifeDesks-Whitepaper.pdf">Read our white paper <img src="../images/page_white_acrobat.png" alt="PDF (200 KB)" /></a> on how we do it.</p>
 <p id="disclaimer"><span>Disclaimer:</span> Download and install these modules only in development environments. We need the most help with our very complex classification module.</p>
-<p>Our Subversion repository is: <a href="http://svn.lifedesks.org">http://svn.lifedesks.org</a></p>
+<p>Our Git repository is: <a href="http://github.com/LifeDesks">http://github.com/LifeDesks</a></p>
 <?php
 
 if(!$info_files) {

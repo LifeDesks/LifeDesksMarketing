@@ -59,7 +59,7 @@ require_once('../conf/vars.inc.php');
 <p class="about-bio"><img src="/images/shipunov.jpg" alt="Alexey Shipunov" class="about-mugshots" />Alexey is a botanist, taxonomist, and a developer. He helped the LifeDesks project with deep thinking about names management and wrote the first versions of the classification import tools and the Encyclopedia of Life content partnership exchange.</p>
 
 <h4>David P. Shorthouse</h4>
-<p class="about-bio"><img src="/images/shorthouse.jpg" alt="David Shorthouse" class="about-mugshots" />David hails from Canada, has a background in spider ecology. He has an interest in names management and spearheaded the classification editing environment in LifeDesks.</p>
+<p class="about-bio"><img src="/images/shorthouse.jpg" alt="David Shorthouse" class="about-mugshots" />David hailed from Canada with a background in spider ecology. He has an interest in names management and spearheaded the multi-user classification editing environment in LifeDesks.</p>
                 	
         		</div>
 				<img src="/images/bluebox_bottom_bg.gif" alt="" />

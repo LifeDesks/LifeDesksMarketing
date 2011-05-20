@@ -57,7 +57,7 @@ require_once('../conf/vars.inc.php');
                         <br />
                         <a href="#faq">Back to top</a></dd>
                       <dt><a name="q06" id="q06"></a>I'm a developer, how can I help?</dt>
-                      <dd>We're always looking for fresh ideas. Please use our <a href="/contact/">Contact Us</a> page. Our Subversion repository is accessible at <a href="http://svn.lifedesks.org">http://svn.lifedesks.org</a>.
+                      <dd>We're always looking for fresh ideas. Please use our <a href="/contact/">Contact Us</a> page. Our Git repository is accessible at <a href="http://github.com/LifeDesks">http://github.com/LifeDesks</a>.
                         <br />
                         <a href="#faq">Back to top</a></dd>
                       <dt><a name="q07" id="q07"></a>Who helped develop LifeDesks?</dt>
@@ -65,7 +65,7 @@ require_once('../conf/vars.inc.php');
                         <br />
                         <a href="#faq">Back to top</a></dd>
                       <dt><a name="q08" id="q08"></a>May I obtain the software and host my own LifeDesk?</dt>
-                      <dd>Absolutely! Here is our <a href="/modules">list of modules</a> to download. We also have a whitepaper on how we execute our multisite hosted environment and how to use our modules available <a href="/files/LifeDesks-Whitepaper.pdf">here <img src="../images/page_white_acrobat.png" alt="PDF (200 KB)"></a>. Our Subversion repository is accessible at <a href="http://svn.lifedesks.org">http://svn.lifedesks.org</a>.
+                      <dd>Absolutely! Here is our <a href="/modules">list of modules</a> to download. We also have a whitepaper on how we execute our multisite hosted environment and how to use our modules available <a href="/files/LifeDesks-Whitepaper.pdf">here <img src="../images/page_white_acrobat.png" alt="PDF (200 KB)"></a>. Our Git repository is accessible at <a href="http://github.com/LifeDesks">http://github.com/LifeDesks</a>.
                         <br />
                         <a href="#faq">Back to top</a></dd>
                       <dt><a name="q09" id="q09"></a>How often are bug fixes released?</dt>
