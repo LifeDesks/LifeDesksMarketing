@@ -12,7 +12,7 @@ header('Retry-After: 86400');
 <title>Maintenance | LifeDesks</title>
 <link href="/css/screen.css" rel="stylesheet" type="text/css" />
 </head>
-<body>
+<body style="padding-top: 0 important!;">
 
 <div id="wrapper">
 	<div id="container">
@@ -42,19 +42,7 @@ We're sorry, LifeDesks are currently undergoing routine maintenance. We will be 
 			</div><!-- /container -->
 
 		</div><!-- /wrapper -->
-			<!-- green bar -->
-			<div id="lifedesk-greenbar-region">
-			    <form method="get" action="/search/" id="lifedesk-greenbar-search-form" accept-charset="UTF-8">
-				  <div id="lifedesk-greenbar-search" class="lifedesk-greenbar">
-			        <input type="text" name="q" size="15" class="lifedesk-greenbar-search-form-text" maxlength="128" disabled />
-			        <input type="submit" value="Search" class="lifedesk-greenbar-search-form-submit" disabled />
-			      </div>
-			      <div id="lifedesk-greenbar-meta" class="lifedesk-greenbar">
-				  </div>
-			    </form>
 
-			</div>
-			<!-- /greenbar -->
 </body>
 </html>
 
