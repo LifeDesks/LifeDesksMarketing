@@ -1,0 +1,56 @@
+body {
+  font-size: 75%;
+  line-height: 1.3333 em;
+  font-family: "Lucida Sans Unicode","Lucida Grande",sans-serif;
+  background: #123e63 url(images/bkgd.jpg) repeat-x
+}
+
+#page {
+  width: 78.3em;
+  margin: 0.5% auto;
+  background-color: #D6EA97;
+}
+#header {
+  background-color: #fff;
+  padding-top: 3.3em;
+  overflow-y: hidden;
+}
+#logo {
+  float: left;
+  padding: 0 1.67em 2em 3.33em
+}
+#header h1 {
+  color: #FE6100;
+  font-size: 1.67em;
+  margin-bottom: 0;
+}
+#site-slogan {
+  color: #0066BA;
+  font-size: 1.2em;
+}
+#main-inner {
+  background: #fff url('images/shadow-b.png') repeat-x bottom left;
+  margin: 2.5em; 
+}
+#content {
+  background: transparent url('images/shadow-r.png') repeat-y top right;
+}
+#content-inner {
+  background: transparent url('images/shadow-br.png') no-repeat bottom right;
+  padding-bottom: 3em;
+}
+#content-inner h2 {
+  background: transparent url('images/shadow-tr.png') no-repeat top right;
+  font-size: 1.67em;
+  padding: 2em 2em 1em;
+}
+#content-inner p {
+  margin: 0 3.3em 2em 3.6em;
+}
+#footer {
+  background-color: #fff;
+  padding: 1em 300px 1em 2.5em;
+}
+#footer p {
+  font-size: 0.83em
+}
