@@ -28,7 +28,13 @@ require_once('../conf/vars.inc.php');
                 <div class="announcement">
 	              New development on LifeDesks officially ceased August 1, 2010. Bugs are fixed as needed.
 	            </div>
-				<form id="create_expert_lifedesk" action="" method="post">
+<?php 
+  $admin_is_accessible = file(ADMIN_URL . "/check_sitename/eolspecies");
+  if ($admin_is_accessible === FALSE) {
+?>
+<div class="error">Sorry, LifeDesks creation is unavailable at this time due to technical issues, please try again later.</div>
+<?php } ?>
+				<form id="create_expert_lifedesk" action="" method="post" <?php if ($admin_is_accessible === FALSE) { ?>style="display:none;"<?php } ?>>
 				  <input type="hidden" name="formType" id="formType" value="expert" />
                   <ol>
 	                <li>
