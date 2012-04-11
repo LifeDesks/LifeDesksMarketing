@@ -4,7 +4,13 @@ require_once('../conf/db.class.php');
 require_once("../conf/solr/SolrAPI.php");
 require_once("Paginator.php");
 
-$solr_online = SolrAPI::ping(SOLR_SERVER, 'lifedesks');
+try {
+  $solr_online = SolrAPI::ping(SOLR_SERVER, 'lifedesks');
+}
+catch (Exception $e) {
+  notify_lifedesks_team($e)
+}
+
 $db = new Database(DB_SERVER, USERNAME, PASSWORD, DB_NAME);
 
 global $db;
@@ -70,27 +76,31 @@ if ($query && $solr_online) {
       }
   }
   catch (Exception $e) {
-	require '../conf/phpmailer/class.phpmailer.php';
-	try {
-		$mail = new PHPMailer(true); //New instance, with exceptions enabled
-		$body             = 'LifeDesks Solr service is broken or offline';
-		$mail->IsSMTP();                           // tell the class to use SMTP
-		$mail->SMTPAuth   = false;
-		$mail->Port       = 25;                    // set the SMTP server port
-		$mail->Host       = SMTP_SERVER;        // SMTP server
-		$mail->From       = 'lifedesks@eol.org';
-		$mail->FromName   = "LifeDesks Team";
-		$mail->AddAddress('lifedesks@eol.org');
-		$mail->AddAddress('prodalerts@eol.org');
-		$mail->Subject  = 'LifeDesks Solr service is broken or offline';
-		$mail->WordWrap   = 80;                    // set word wrap
-		$mail->Body = $body;
-		$mail->IsHTML(false);
-		$mail->Send();
-	}
-	catch (phpmailerException $e) {
-		error_log($e->errorMessage());
-	}
+    notify_lifedesks_team($e)
+  }
+}
+
+function notify_lifedesks_team($e) {
+  require '../conf/phpmailer/class.phpmailer.php';
+  try {
+    $mail = new PHPMailer(true); //New instance, with exceptions enabled
+    $body             = 'LifeDesks Solr service is broken or offline. ERROR: ' . $e->errorMessage();
+    $mail->IsSMTP();                           // tell the class to use SMTP
+    $mail->SMTPAuth   = false;
+    $mail->Port       = 25;                    // set the SMTP server port
+    $mail->Host       = SMTP_SERVER;        // SMTP server
+    $mail->From       = 'lifedesks@eol.org';
+    $mail->FromName   = "LifeDesks Team";
+    $mail->AddAddress('lifedesks@eol.org');
+    $mail->AddAddress('prodalerts@eol.org');
+    $mail->Subject  = 'LifeDesks Solr service is broken or offline';
+    $mail->WordWrap   = 80;                    // set word wrap
+    $mail->Body = $body;
+    $mail->IsHTML(false);
+    $mail->Send();
+  }
+  catch (phpmailerException $e) {
+    error_log($e->errorMessage());
   }
 }
 
