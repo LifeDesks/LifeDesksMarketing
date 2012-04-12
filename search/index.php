@@ -8,7 +8,7 @@ try {
   $solr_online = SolrAPI::ping(SOLR_SERVER, 'lifedesks');
 }
 catch (Exception $e) {
-  notify_lifedesks_team($e)
+  notify_lifedesks_team($e);
 }
 
 $db = new Database(DB_SERVER, USERNAME, PASSWORD, DB_NAME);
@@ -76,7 +76,7 @@ if ($query && $solr_online) {
       }
   }
   catch (Exception $e) {
-    notify_lifedesks_team($e)
+    notify_lifedesks_team($e);
   }
 }
 
