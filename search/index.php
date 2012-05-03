@@ -6,6 +6,9 @@ require_once("Paginator.php");
 
 try {
   $solr_online = SolrAPI::ping(SOLR_SERVER, 'lifedesks');
+  if(!$solr_online) {
+    notify_lifedesks_team("Unable to connect to the SOLR Server for LifeDesks. Please contact your system administrator.");
+  }
 }
 catch (Exception $e) {
   notify_lifedesks_team($e);
@@ -80,11 +83,11 @@ if ($query && $solr_online) {
   }
 }
 
-function notify_lifedesks_team($e) {
+function notify_lifedesks_team($exception) {
   require '../conf/phpmailer/class.phpmailer.php';
   try {
     $mail = new PHPMailer(true); //New instance, with exceptions enabled
-    $body             = 'LifeDesks Solr service is broken or offline. ERROR: ' . $e->errorMessage();
+    $body             = 'LifeDesks Solr service is broken or offline. ERROR: ' . ( is_string($exception) ? $exception : $exception->errorMessage());
     $mail->IsSMTP();                           // tell the class to use SMTP
     $mail->SMTPAuth   = false;
     $mail->Port       = 25;                    // set the SMTP server port
