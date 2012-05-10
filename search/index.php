@@ -6,7 +6,7 @@ require_once("Paginator.php");
 
 try {
   $solr_online = SolrAPI::ping(SOLR_SERVER, 'lifedesks');
-  if(!$solr_online) {
+  if(!$solr_online && ENVIRONMENT == 'production') {
     notify_lifedesks_team("Unable to connect to the SOLR Server for LifeDesks. Please contact your system administrator.");
   }
 }
