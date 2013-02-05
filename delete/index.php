@@ -22,8 +22,8 @@ require_once('../conf/vars.inc.php');
                 <div id="text">
                 	<h2>Sorry to see you go...</h2>
 <div class="release_version">
-	Thank you for having tried LifeDesks. If you provided us with feedback we greatly appreciate it. LifeDesks will be developed at a rapid pace so if there was a feature you needed, chances are we'll be working on a solution. We expect to release new features and bug fixes every few weeks and you may track our progress <a href="/newfeatures/">HERE</a>.<br /><br />We hope to see you again soon,<br /><br />
-	The LifeDesk Team 
+<p>Thank you for having tried LifeDesks. If you provided us with feedback we greatly appreciate it.</p>
+<p>The LifeDesk Team</p>
 </div>
               </div>
 
