@@ -31,7 +31,7 @@ require_once('../conf/vars.inc.php');
             <li>Zero responsibility to develop and maintain code</li>
             <li>Freedom from server and infrastructure management</li>
           </ul>
-          <p>LifeDesks are maintained by the <a href="http://www.mbl.edu">Marine Biological Laboratory</a>, Woods Hole, Massachusetts.</p>
+          <p>LifeDesks are maintained by the <a href="http://eol.org">Encyclopedia of Life</a> team.</p>
         </div>
         <img src="/images/bluebox_bottom_bg.gif" alt="" />
       </div>
