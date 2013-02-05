@@ -32,6 +32,8 @@ require_once('../conf/vars.inc.php');
             <li>Freedom from server and infrastructure management</li>
           </ul>
           <p>LifeDesks are maintained by the <a href="http://eol.org">Encyclopedia of Life</a> team.</p>
+          <h3>Similar projects</h3>
+          <ul><li><a href="http://scratchpads.eu">Scratchpads</a> an online virtual research environment for biodiversity, allowing anyone to share their data and create their own research networks.</li></ul>
         </div>
         <img src="/images/bluebox_bottom_bg.gif" alt="" />
       </div>
