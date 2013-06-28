@@ -89,13 +89,14 @@ function notify_lifedesks_team($exception) {
     $mail = new PHPMailer(true); //New instance, with exceptions enabled
     $body             = 'LifeDesks Solr service is broken or offline. ERROR: ' . ( is_string($exception) ? $exception : $exception->errorMessage());
     $mail->IsSMTP();                           // tell the class to use SMTP
-    $mail->SMTPAuth   = false;
-    $mail->Port       = 25;                    // set the SMTP server port
-    $mail->Host       = SMTP_SERVER;        // SMTP server
-    $mail->From       = 'lifedesks@eol.org';
+    $mail->SMTPAuth   = true;
+    $mail->Port       = SMTP_PORT;
+    $mail->Host       = SMTP_SERVER;
+    $mail->Username   = SMTP_USERNAME;
+    $mail->Password   = SMTP_PASSWORD;
+    $mail->From       = SMTP_FROM;
     $mail->FromName   = "LifeDesks Team";
-    $mail->AddAddress('lifedesks@eol.org');
-    $mail->AddAddress('prodalerts@eol.org');
+    $mail->AddAddress(SMTP_FEEDBACK);
     $mail->Subject  = 'LifeDesks Solr service is broken or offline';
     $mail->WordWrap   = 80;                    // set word wrap
     $mail->Body = $body;

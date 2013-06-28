@@ -4,8 +4,14 @@ define('USERNAME','lifedesk');
 define('PASSWORD', 'lifedesk');
 define('DB_SERVER', '127.0.0.1');
 define('DB_NAME', 'lifedesk_production');
-define('SMTP_SERVER', 'localhost');
 define('MYSQL_BIN_PATH','/usr/local/bin/mysql'); // /data/mysql/bin/mysql on integration and production
+
+define('SMTP_SERVER', 'localhost');
+define('SMTP_PORT', 465);
+define('SMTP_USERNAME', 'lifedesks');
+define('SMTP_PASSWORD', 'lifedesks');
+define('SMTP_FROM', 'example@example.exa');
+define('SMTP_FEEDBACK', 'example@example.exa');
 
 //define some other vars
 define('ENVIRONMENT', 'development');

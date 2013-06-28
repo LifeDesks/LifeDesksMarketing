@@ -36,32 +36,34 @@ else{
 	  $subject = 'LifeDesks';
 	  $EMAIL_CONTENT='Hello '.$friends_name.',' . "\r\n\r\n" . $my_name.' invites you to visit LifeDesks at '.BASE_URL.'.' . "\r\n\r\n" . 'LifeDesks are dynamic web environments that help you manage and share biodiversity data.';
 
-	try {
-		$mail = new PHPMailer(true); //New instance, with exceptions enabled
-		$body             = $EMAIL_CONTENT;
-		$mail->IsSMTP();                           // tell the class to use SMTP
-		$mail->SMTPAuth   = false;
-		$mail->Port       = 25;                    // set the SMTP server port
-		$mail->Host       = SMTP_SERVER; // SMTP server
-		$mail->AddReplyTo($from,$my_name);
-		$mail->From       = $from;
-		$mail->FromName   = $my_name;
-		$mail->AddAddress($friends_email);
-		if($include_me != "") {
-		  $mail->AddCC($from, $my_name);	
-		}
-		$mail->Subject  = $subject;
-		$mail->WordWrap   = 80; // set word wrap
-		$mail->Body = $body;
-		$mail->IsHTML(false);
-		$mail->Send();
-		echo '<span class="emailSent">Thank you, your message has been sent.</span>';
-	} 
-	catch (phpmailerException $e) {
-		$sent_mail = false;
-		error_log($e->errorMessage());
-	}
-	
+  try {
+    $mail = new PHPMailer(true); //New instance, with exceptions enabled
+    $body             = $EMAIL_CONTENT;
+    $mail->IsSMTP();
+    $mail->SMTPAuth   = true;
+    $mail->Port       = SMTP_PORT;
+    $mail->Host       = SMTP_SERVER;
+    $mail->Username   = SMTP_USERNAME;
+    $mail->Password   = SMTP_PASSWORD;
+    $mail->AddReplyTo($from,$my_name);
+    $mail->From       = $from;
+    $mail->FromName   = $my_name;
+    $mail->AddAddress($friends_email);
+    if($include_me != "") {
+      $mail->AddCC($from, $my_name);
+    }
+    $mail->Subject  = $subject;
+    $mail->WordWrap   = 80; // set word wrap
+    $mail->Body = $body;
+    $mail->IsHTML(false);
+    $mail->Send();
+    echo '<span class="emailSent">Thank you, your message has been sent.</span>';
+  }
+  catch (phpmailerException $e) {
+    $sent_mail = false;
+    error_log($e->errorMessage());
+  }
+
 }
 ?>
 

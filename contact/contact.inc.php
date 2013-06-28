@@ -91,48 +91,52 @@ if ($_POST) {
 
 	  require '../conf/phpmailer/class.phpmailer.php';
 
-	  try {
-		$mail = new PHPMailer(true); //New instance, with exceptions enabled
-		$body             = $EMAIL_CONTENT1;
-		$mail->IsSMTP();                           // tell the class to use SMTP
-		$mail->SMTPAuth   = false;
-		$mail->Port       = 25;                    // set the SMTP server port
-		$mail->Host       = SMTP_SERVER;        // SMTP server
-		$mail->From       = $rec2;
-		$mail->FromName   = "LifeDesks Team";
-		$mail->AddAddress($rec1);
-		$mail->Subject  = $subject;
-		$mail->WordWrap   = 80;                    // set word wrap
-		$mail->Body = $body;
-		$mail->IsHTML(false);
-		$mail->Send();
-	  } 
-	  catch (phpmailerException $e) {
-		$sent_mail1 = false;
-		error_log($e->errorMessage());
-	  }
-	
-	  try {
-		$mail2 = new PHPMailer(true); //New instance, with exceptions enabled
-		$body             = $EMAIL_CONTENT2;
-		$mail2->IsSMTP();                           // tell the class to use SMTP
-		$mail2->SMTPAuth   = false;
-		$mail2->Port       = 25;                    // set the SMTP server port
-		$mail2->Host       = SMTP_SERVER;        // SMTP server
-		$mail2->From       = $rec1;
-		$mail2->FromName   = $contact_name;
-		$mail2->AddAddress($rec2);
-		$mail2->Subject  = $subject;
-		$mail2->WordWrap   = 80;                    // set word wrap
-		$mail2->Body = $body;
-		$mail2->IsHTML(false);
-		$mail2->Send();	
-	  }
-	  catch (phpmailerException $e) {
-		$sent_mail2 = false;
-		error_log($e->errorMessage());
-	  }
-	
+    try {
+      $mail = new PHPMailer(true); //New instance, with exceptions enabled
+      $body             = $EMAIL_CONTENT1;
+      $mail->IsSMTP();                           // tell the class to use SMTP
+      $mail->SMTPAuth   = true;
+      $mail->Port       = SMTP_PORT;
+      $mail->Host       = SMTP_SERVER;
+      $mail->Username   = SMTP_USERNAME;
+      $mail->Password   = SMTP_PASSWORD;
+      $mail->From       = $rec2;
+      $mail->FromName   = "LifeDesks Team";
+      $mail->AddAddress($rec1);
+      $mail->Subject  = $subject;
+      $mail->WordWrap   = 80;                    // set word wrap
+      $mail->Body = $body;
+      $mail->IsHTML(false);
+      $mail->Send();
+    }
+    catch (phpmailerException $e) {
+      $sent_mail1 = false;
+      error_log($e->errorMessage());
+    }
+
+    try {
+      $mail2 = new PHPMailer(true); //New instance, with exceptions enabled
+      $body             = $EMAIL_CONTENT2;
+      $mail2->IsSMTP();
+      $mail->SMTPAuth   = true;
+      $mail->Port       = SMTP_PORT;
+      $mail->Host       = SMTP_SERVER;
+      $mail->Username   = SMTP_USERNAME;
+      $mail->Password   = SMTP_PASSWORD;
+      $mail2->From       = $rec1;
+      $mail2->FromName   = $contact_name;
+      $mail2->AddAddress($rec2);
+      $mail2->Subject  = $subject;
+      $mail2->WordWrap   = 80;                    // set word wrap
+      $mail2->Body = $body;
+      $mail2->IsHTML(false);
+      $mail2->Send();
+    }
+    catch (phpmailerException $e) {
+      $sent_mail2 = false;
+      error_log($e->errorMessage());
+    }
+
       $response_data .= '$("#lifedesk_response_overlay").fadeIn();';
       $response_data .= 'var message = $("#lifedesk_response_message");';
       $response_data .= 'message.fadeIn("slow").html("<div id=\"expert_response_message\"><p>Thanks for contacting us. We will respond to your inquiry or comment as soon as we can.</p><div class=\"submit\"><input id=\"lifedesk_response_button\" type=\"image\" value=\"close\" src=\"/images/btn_close.gif\" onclick=\"close_message();\" /></div></div>")';
